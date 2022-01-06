@@ -1,5 +1,9 @@
 
 <?php 
+
+error_reporting(0);
+@ini_set('display_errors', 0);
+
 	# Stop Hacking attempt
 	define('__APP__', TRUE);
 	
@@ -47,7 +51,9 @@ print '
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
         <title>Zvonimir Ćosić</title>
     </head>
-
+';
+if (!isset($_SESSION['message'])) { print $_SESSION['message']; }
+print '
     <body>
         <body class="home"></body>
         <h1>Zvonimir Ćosić</h1>
@@ -61,7 +67,7 @@ print '
         </div>
         
 
-    </body>
+    
     <footer>
         <div class="footer">
             <p>Social media:<br>
@@ -78,5 +84,6 @@ print '
     </footer> 
 
     
-';
+    </body>
+</html>';
 ?>
