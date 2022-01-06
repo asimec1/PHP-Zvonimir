@@ -1,4 +1,27 @@
 <?php
+
+error_reporting(0);
+@ini_set('display_errors', 0);
+
+# Stop Hacking attempt
+define('__APP__', TRUE);
+
+# Start session
+session_start();
+
+	# Database connection
+	include ("db.php");
+	
+	# Variables MUST BE INTEGERS
+    if(isset($_GET['menu'])) { $menu   = (int)$_GET['menu']; }
+	if(isset($_GET['action'])) { $action   = (int)$_GET['action']; }
+	
+	# Variables MUST BE STRINGS A-Z
+    if(!isset($_POST['_action_']))  { $_POST['_action_'] = FALSE;  }
+	
+	if (!isset($menu)) { $menu = 1; }
+	
+
 print '
 
 <!DOCTYPE html>
@@ -34,6 +57,7 @@ print '
             </div>
             <nav> ';
                 include("menu.php");
+                if (!isset($_SESSION['message'])) { print $_SESSION['message']; }
             print '
             </nav>
         </header>
